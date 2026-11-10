@@ -1145,6 +1145,65 @@
         });
       });
 
+       /* 5. Animated Number Counters */
+      const statNumbers = document.querySelectorAll('.stat-number');
+      let statsCounted = false;
+
+      function startCounters() {
+        statNumbers.forEach(stat => {
+          const target = +stat.getAttribute('data-target');
+          const duration = 1200;
+          const stepTime = 20;
+          const totalSteps = duration / stepTime;
+          const increment = target / totalSteps;
+          let current = 0;
+
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              stat.textContent = target;
+              clearInterval(timer);
+            } else {
+              stat.textContent = Math.ceil(current);
+            }
+          }, stepTime);
+        });
+      }
+
+      // Intersection Observer to trigger counter when in view
+      const aboutSection = document.getElementById('about');
+      if ('IntersectionObserver' in window && aboutSection) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !statsCounted) {
+              statsCounted = true;
+              startCounters();
+            }
+          });
+        }, { threshold: 0.3 });
+        observer.observe(aboutSection);
+      } else {
+        startCounters();
+      }
+
+      /* 6. Interactive Contact Form with Validation & Feedback (no alert()) */
+      const contactForm = document.getElementById('contactForm');
+      const formAlert = document.getElementById('formAlert');
+
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (!name || !email || !subject || !message) {
+          formAlert.className = 'mb-6 p-4 rounded-xl text-sm font-medium bg-rose-500/10 border border-rose-500/30 text-rose-600 dark:text-rose-400 block';
+          formAlert.textContent = 'Please fill out all required fields.';
+          return;
+        }
+
 </script>
 
 </body>
