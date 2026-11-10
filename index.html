@@ -1203,6 +1203,17 @@
           formAlert.textContent = 'Please fill out all required fields.';
           return;
         }
+  // Simulate submission success
+        formAlert.className = 'mb-6 p-4 rounded-xl text-sm font-medium bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 block';
+        formAlert.textContent = 'Thank you! Your message has been sent successfully.';
+
+        contactForm.reset();
+
+        setTimeout(() => {
+          formAlert.classList.add('hidden');
+        }, 5000);
+      });
+    });
 
 </script>
 
