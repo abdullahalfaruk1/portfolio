@@ -892,7 +892,7 @@
                             <span class="px-2.5 py-0.5 text-xs rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">VAPT</span>
                             <span class="px-2.5 py-0.5 text-xs rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">PortSwigger</span>
                             <span class="px-2.5 py-0.5 text-xs rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Web Security</span>
-                        </div>
+                         </div>
                     </div>
                 </div>
 
@@ -903,10 +903,6 @@
 </section>
 
 
-
-
-
-    
        <section id="contact" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <h2 class="text-xs uppercase tracking-widest font-bold text-indigo-600 dark:text-indigo-400 mb-2">Get In Touch</h2>
@@ -1027,7 +1023,29 @@
     </div>
   </footer>
 
+<script>
+     document.addEventListener('DOMContentLoaded', () => {
+      // Set current year in footer
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
 
+      /* 1. Dark / Light Theme Switching */
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      const themeIcon = document.getElementById('themeIcon');
+      const htmlElement = document.documentElement;
+
+      // Check saved preference or system preference
+      const savedTheme = localStorage.getItem('theme');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+        htmlElement.classList.add('dark');
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        htmlElement.classList.remove('dark');
+        themeIcon.classList.replace('fa-sun', 'fa-moon');
+      }
+
+</script>
 
 </body>
 
