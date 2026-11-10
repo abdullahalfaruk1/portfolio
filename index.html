@@ -1044,6 +1044,106 @@
         htmlElement.classList.remove('dark');
         themeIcon.classList.replace('fa-sun', 'fa-moon');
       }
+  themeToggleBtn.addEventListener('click', () => {
+        if (htmlElement.classList.contains('dark')) {
+          htmlElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+          themeIcon.classList.replace('fa-sun', 'fa-moon');
+        } else {
+          htmlElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+          themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+      });
+
+      /* 2. Mobile Hamburger Toggle */
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const menuIcon = document.getElementById('menuIcon');
+      const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        if (isHidden) {
+          menuIcon.classList.replace('fa-xmark', 'fa-bars');
+        } else {
+          menuIcon.classList.replace('fa-bars', 'fa-xmark');
+        }
+      });
+
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.replace('fa-xmark', 'fa-bars');
+        });
+      });
+
+      /* 3. Typing Subtitle Animation */
+      const words = [
+        'Web Developer.',
+        'UI/UX Enthusiast.',
+        'Full-Stack Engineer.',
+        'Creative Problem Solver.'
+      ];
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typingSpeed = 100;
+      const erasingSpeed = 50;
+      const pauseDuration = 1800;
+      const typingElement = document.getElementById('typing-text');
+
+      function typeEffect() {
+        const currentWord = words[wordIndex];
+        if (isDeleting) {
+          typingElement.textContent = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          typingElement.textContent = currentWord.substring(0, charIndex + 1);
+          charIndex++;
+        }
+
+        let delta = isDeleting ? erasingSpeed : typingSpeed;
+
+        if (!isDeleting && charIndex === currentWord.length) {
+          delta = pauseDuration;
+          isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          delta = 300;
+        }
+
+        setTimeout(typeEffect, delta);
+      }
+      typeEffect();
+
+      /* 4. Filter Projects */
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Manage button styling
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-indigo-600', 'text-white', 'shadow-sm');
+            b.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+          });
+          btn.classList.add('bg-indigo-600', 'text-white', 'shadow-sm');
+          btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+
+          const category = btn.getAttribute('data-filter');
+
+          projectCards.forEach(card => {
+            const cardCat = card.getAttribute('data-category');
+            if (category === 'all' || cardCat === category) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
 
 </script>
 
