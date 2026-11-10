@@ -21,6 +21,54 @@
     <!-- Tailwind CSS CDN -->
 
     <script src="https://cdn.tailwindcss.com"></script>
+     <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Custom subtle animations and utilities */
+    @keyframes pulseSoft {
+      0%, 100% { opacity: 0.15; transform: scale(1); }
+      50% { opacity: 0.25; transform: scale(1.05); }
+    }
+    .animate-ambient {
+      animation: pulseSoft 8s ease-in-out infinite;
+    }
+    /* Typing cursor effect */
+    .typing-cursor::after {
+      content: '|';
+      margin-left: 2px;
+      animation: blink 0.8s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    /* Glassmorphism utility */
+    .glass-card {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  </style>
+
 </head>
 
 <body
