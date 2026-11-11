@@ -620,7 +620,7 @@
 
                 <!-- need to add live demo link -->
 
-                <a href="" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1.5">
+                <a href="#projects" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1.5">
           <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Live Demo
                 </a>
 
@@ -668,7 +668,7 @@
 
 
                  <!-- Project 4 -->
-          <div class="project-card group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl" data-category="fullstack">
+          <div class="project-card group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl" data-category="fullstack design">
             <div class="relative overflow-hidden h-48 bg-slate-200 dark:bg-slate-800">
 
                 <!-- need to add new picture after add js -->
@@ -707,7 +707,7 @@
 
 
                    <!-- Project 5 -->
-          <div class="project-card group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl" data-category="fullstack">
+          <div class="project-card group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl" data-category="fullstack design">
             <div class="relative overflow-hidden h-48 bg-slate-200 dark:bg-slate-800">
               <img 
                 src="" 
@@ -1197,7 +1197,7 @@
 
         projectCards.forEach(card => {
           const cardCat = card.getAttribute('data-category');
-          if (category === 'all' || cardCat === category) {
+         if (category === 'all' || cardCat.includes(category)) {
             card.style.display = 'block';
           } else {
             card.style.display = 'none';
