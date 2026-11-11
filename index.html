@@ -1257,9 +1257,9 @@
       e.preventDefault();
 
       // Check 1: File protocol check for local file access
-      if (window.location.protocol === 'file:') {
+     if (window.location.protocol === 'file:') {
         formAlert.className = 'mb-6 p-4 rounded-xl text-sm font-medium bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-300 dark:border-amber-800 flex items-center gap-2';
-        formAlert.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> <span><b>Local File Detected:</b> ইমেইল পাঠানোর জন্য ফাইলটি VS Code <b>Live Server</b> দিয়ে ওপেন করুন অথবা <b>GitHub Pages</b>-এ আপলোড করুন।</span>';
+        formAlert.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> <span><b>Local File Detected:</b> To send emails, please open this file using VS Code <b>Live Server</b> or host it on <b>GitHub Pages</b>.</span>';
         return;
       }
 
@@ -1311,7 +1311,7 @@
             <i class="fa-solid fa-circle-exclamation"></i> Notice: ${error.message}
           </div>
           <div class="text-xs mt-1">
-            আপনার <b>alfaruk091@gmail.com</b> এর <b>Inbox</b> অথবা <b>Spam</b> ফোল্ডার চেক করে FormSubmit-এর ইমেইলটি <b>Activate</b> করুন। অ্যাক্টিভেশন মেইল না পেলে <button type="button" onclick="document.getElementById('contactForm').submit()" class="underline font-bold text-indigo-600 dark:text-indigo-400">এখানে ক্লিক করে সরাসরি সাবমিট করুন</button>।
+            Please check the <b>Inbox</b> or <b>Spam</b> folder of <b>alfaruk091@gmail.com</b> to <b>Activate</b> FormSubmit. If you haven't received the activation email, <button type="button" onclick="HTMLFormElement.prototype.submit.call(document.getElementById('contactForm'))" class="underline font-bold text-indigo-600 dark:text-indigo-400">click here to submit directly</button>.
           </div>
         `;
       } finally {
